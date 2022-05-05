@@ -100,10 +100,11 @@ def playAgain():
 print('В И С Е Л И Ц А')
 
 missedLetters = correctLetters = ''
-secretWord = getRandomWord(words)
+secretWord, secretSet = getRandomWord(words)
 gameIsDone = False
 
 while True:
+    print('Секретное слово из набора: ' + secretSet)
     displayBoard(missedLetters, correctLetters, secretWord)
 
     guess = getGuess(missedLetters + correctLetters)
