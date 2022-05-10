@@ -75,7 +75,6 @@ def displayBoard(missedLetters, correctLetters, secretWord, secretSet):
     print()
 
 
-
 # Обработка вводимого символа:
 def getGuess(alreadyGuessed):
     while True:
@@ -99,17 +98,17 @@ def playAgain():
 # main program:
 print('В И С Е Л И Ц А')
 
-difficulty = ''
+difficulty = '-'
 while difficulty not in 'EMH':
     difficulty = input('Выбирите уровень сложности: E - легкий, M - средний, H - тяжелый: ').upper()
 if difficulty == 'M':
-    del HANGMAN_PICS[0]
     del HANGMAN_PICS[1]
+    del HANGMAN_PICS[2]
 if difficulty == 'H':
-    del HANGMAN_PICS[0]
     del HANGMAN_PICS[1]
     del HANGMAN_PICS[2]
     del HANGMAN_PICS[3]
+#    del HANGMAN_PICS[4]
 
 missedLetters = correctLetters = ''
 secretWord, secretSet = getRandomWord(words)
@@ -144,6 +143,7 @@ while True:
         if playAgain(): 
             gameIsDone = False       
             missedLetters = correctLetters = ''
-            secretWord = getRandomWord(words)
+            secretWord, secretSet = getRandomWord(words)
+            diffuculty = '-'
         else:
             break
